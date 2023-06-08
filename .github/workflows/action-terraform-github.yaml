@@ -29,9 +29,8 @@ jobs:
           echo "${{ secrets.GCS_CREDENTIALS }}" > terraform-gcs.json
           ls -ltr
           cat terraform-gcs.json
-          echo "$GCS_SECRET"
         env:
-          GCS_SECRET: "${{ secrets.GCS_CREDENTIALS }}"
+          GCS_SECRET: ${{ secrets.GCS_CREDENTIALS }}
       
       - name: Setup Terraform
         uses: hashicorp/setup-terraform@v1
