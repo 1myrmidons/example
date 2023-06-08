@@ -9,7 +9,7 @@ on:
         default: 'yes'
 
 env:
-  TF_VAR_gh_token: "${{ secrets.CUSTOM_TOKEN }}"
+  TF_VAR_gh_token: ${{ secrets.CUSTOM_TOKEN }}
 
 defaults:
   run:
@@ -26,9 +26,8 @@ jobs:
       
       - name: Store file as secret
         run: |
-          echo "${{ secrets.GCS_CREDENTIALS }}" > terraform-gcs.json
-          ls -ltr
-          cat terraform-gcs.json
+          echo "hi"
+          echo ${{ secrets.GCS_CREDENTIALS }}
         env:
           GCS_SECRET: ${{ secrets.GCS_CREDENTIALS }}
       
