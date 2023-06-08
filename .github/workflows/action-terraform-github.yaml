@@ -33,7 +33,7 @@ jobs:
           GCS_SECRET: ${{ secrets.GCS_CREDENTIALS }}
       
       - name: Setup Terraform
-        uses: hasicorp/setup-terraform@v1
+        uses: hashicorp/setup-terraform@v1
 
       - name: Terraform init
         id: init
