@@ -7,6 +7,10 @@ on:
         description: "Do you want to create a repository (yes/no)?"
         required: true
         default: 'yes'
+
+env:
+  TF_VAR_gh_token: ${{ secrets.CUSTOM_TOKEN }}
+
 defaults:
   run:
     working-directory: git-init
@@ -28,8 +32,7 @@ jobs:
           cat ./terraform-gcs.json
         env:
           GCS_SECRET: ${{ secrets.GCS_CREDENTIALS }}
-          TF_VAR_gh_token: ${{ secrets.CUSTOM_TOKEN }}
-
+      
       - name: Setup Terraform
         uses: hashicorp/setup-terraform@v1
 
