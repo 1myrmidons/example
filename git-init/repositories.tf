@@ -11,17 +11,19 @@ resource "github_branch" "development" {
   branch     = "development"
 }
 
-# resource "github_branch_protection" "example" {
-#   repository_id = github_repository.example.node_id
-#   # also accepts repository name
-#   # repository_id  = github_repository.example.name
+/*
+resource "github_branch_protection" "example" {
+  repository_id = github_repository.example.node_id
+  # also accepts repository name
+  # repository_id  = github_repository.example.name
 
-#   pattern          = "development"
-#   enforce_admins   = true
+  pattern          = "development"
+  enforce_admins   = true
 
-#   required_pull_request_reviews {
-#     dismiss_stale_reviews  = true
-#     restrict_dismissals    = true
-#   }
+  required_pull_request_reviews {
+    dismiss_stale_reviews  = true
+    restrict_dismissals    = true
+  }
 
-# }
+}
+*/
