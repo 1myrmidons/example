@@ -5,7 +5,7 @@ on:
     inputs:
       init-repo:
         description: "Do you want to create a repository (yes/no)?"
-        requierd: true
+        required: true
         default: 'yes'
 
 env:
@@ -13,7 +13,7 @@ env:
 
 defaults:
   run:
-    working_directory: git-init
+    working-directory: git-init
 
 jobs:
   Terraform-Script:
@@ -23,6 +23,14 @@ jobs:
     steps:
       - name: Checkout Files
         uses: actions/checkout@v2
+      
+      - name: Store file as secret
+        run: |
+          echo "$GCS_SECRET" >> terraform-gcs.json
+          ls -ltr
+          cat terraform-gcs.json
+        env:
+          GCS_SECRET: ${{ secrets.GCS_CREDENTIALS }}
       
       - name: Setup Terraform
         uses: hasicorp/setup-terraform@v1
