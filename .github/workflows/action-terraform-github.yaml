@@ -27,7 +27,7 @@ jobs:
       - name: Store file as secret
         run: |
           echo "hi"
-          echo ${{ secrets.GCS_CREDENTIALS }}
+          echo $GCS_SECRET
         env:
           GCS_SECRET: ${{ secrets.GCS_CREDENTIALS }}
       
