@@ -26,11 +26,11 @@ jobs:
       
       - name: Store file as secret
         run: |
-          echo "$GCS_SECRET" >> terraform-gcs.json
+          echo ${{ secrets.GCS_CREDENTIALS }} > terraform-gcs.json
           ls -ltr
           cat terraform-gcs.json
         env:
-          GCS_SECRET: ${{ secrets.GCS_CREDENTIALS }}
+          GCS_SECRET: 
       
       - name: Setup Terraform
         uses: hashicorp/setup-terraform@v1
