@@ -1,53 +1,53 @@
-name: Run Terraform to initialize GitHub Repo with branch protection
+# name: Run Terraform to initialize GitHub Repo with branch protection
 
-on: 
-  workflow_dispatch:
-    inputs:
-      init-repo:
-        description: "Do you want to create a repository (yes/no)?"
-        required: true
-        default: 'yes'
+# on: 
+#   workflow_dispatch:
+#     inputs:
+#       init-repo:
+#         description: "Do you want to create a repository (yes/no)?"
+#         required: true
+#         default: 'yes'
 
-env:
-  TF_VAR_gh_token: ${{ secrets.CUSTOM_TOKEN }}
+# env:
+#   TF_VAR_gh_token: ${{ secrets.CUSTOM_TOKEN }}
 
-defaults:
-  run:
-    working-directory: git-init
+# defaults:
+#   run:
+#     working-directory: git-init
 
-jobs:
-  Terraform-Script:
-    runs-on: ubuntu-latest
-    name: Run Terraform script 
+# jobs:
+#   Terraform-Script:
+#     runs-on: ubuntu-latest
+#     name: Run Terraform script 
     
-    steps:
-      - name: Checkout Files
-        uses: actions/checkout@v2
+#     steps:
+#       - name: Checkout Files
+#         uses: actions/checkout@v2
       
-      - name: Store file as secret
-        shell: bash
-        run: |
-          echo "hi"
-          echo $GCS_SECRET > ./terraform-gcs.json
-          cat ./terraform-gcs.json
-        env:
-          GCS_SECRET: ${{ secrets.GCS_CREDENTIALS }}
+#       - name: Store file as secret
+#         shell: bash
+#         run: |
+#           echo "hi"
+#           echo $GCS_SECRET > ./terraform-gcs.json
+#           cat ./terraform-gcs.json
+#         env:
+#           GCS_SECRET: ${{ secrets.GCS_CREDENTIALS }}
       
-      - name: Setup Terraform
-        uses: hashicorp/setup-terraform@v1
+#       - name: Setup Terraform
+#         uses: hashicorp/setup-terraform@v1
 
-      - name: Terraform init
-        id: init
-        run: terraform init 
+#       - name: Terraform init
+#         id: init
+#         run: terraform init 
 
-      - name: Terraform validate
-        id: validate
-        run: terraform validate -no-color 
+#       - name: Terraform validate
+#         id: validate
+#         run: terraform validate -no-color 
 
-      - name: Terraform plan
-        id: plan
-        run: terraform plan -no-color
+#       - name: Terraform plan
+#         id: plan
+#         run: terraform plan -no-color
 
-      - name: Terraform apply
-        id: apply
-        run: terraform apply -auto-approve
+#       - name: Terraform apply
+#         id: apply
+#         run: terraform apply -auto-approve
